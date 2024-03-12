@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(39, 30, 88);
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    color: white;
+}
+.header {
+    background-color: rgb(12, 6, 46);
+    width: 100%;
+    text-align: center; 
+    padding: 10px;
+    color: white;
+}
+
+.backGround {
+    background-color: rgb(164, 154, 231);
+    width: 100%;
+    text-align: center;
+}
+
+.typeSelect,
+.caseWeight,
+.steak,
+.steakInput,
+.yieldButton {
+    width: 300px; 
+    margin-bottom: 10px;
+}
