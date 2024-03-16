@@ -24,11 +24,30 @@
 
     <div>
         <labe class="caseWeight" for="caseWeight">Enter Case Weight (in pounds):</label>
-        <input type="number" id="caseWeight">
+        <input class="caseWeight" type="number" id="caseWeight">
     </div>
 
     <button class="yieldButton" onclick="calculateYield()">Calculate Yield Percentage</button>
     <p id="result"></p>
+
+    
+    <div class="input-container">
+        <label for="beefWeight">Enter Beef Weight (in ounces):</label>
+        <input type="number" id="beefWeight">
+    </div>
+
+    <div id="steakButtons">
+        <button class="steak-button" onclick="subtractWeight(6)">- 6 oz</button>
+        <button class="steak-button" onclick="subtractWeight(8)">- 8 oz</button>
+        <button class="steak-button" onclick="subtractWeight(11)">- 11 oz</button>
+        <button class="steak-button" onclick="subtractWeight(12)">- 12 oz</button>
+        <button class="steak-button" onclick="subtractWeight(16)">- 16 oz</button>
+    </div>
+
+    <button class="calculate-button" onclick="calculateCuts()">Calculate Cuts</button>
+
+    <div id="cutsResult"></div>
+
 
     <script>
         function changeSteakSizes() {
@@ -42,8 +61,8 @@
             switch (meatType) {
                 case "sirloin":
                     addSteakSizeInput(4, steakSizesContainer, "Tips");
-                    addSteakSizeInput(6, steakSizesContainer, "Sirloin");
                     addSteakSizeInput(6, steakSizesContainer, "CFS");
+                    addSteakSizeInput(6, steakSizesContainer, "Sirloin");
                     addSteakSizeInput(8, steakSizesContainer, "Sirloin");
                     addSteakSizeInput(11, steakSizesContainer, "Sirloin");
                     addSteakSizeInput(16, steakSizesContainer, "Sirloin");
@@ -103,6 +122,46 @@
             }
         }
     </script>
+
+<script>
+    function calculateCuts() {
+        var beefWeight = parseFloat(document.getElementById("beefWeight").value);
+        var cutsResult = document.getElementById("cutsResult");
+
+        if (isNaN(beefWeight) || beefWeight <= 0) {
+            cutsResult.textContent = "Please enter a valid beef weight.";
+            return;
+        }
+
+        var cuts = {
+            "6s": Math.floor(beefWeight / 6),
+            "8s": Math.floor(beefWeight / 8),
+            "11s": Math.floor(beefWeight / 11),
+            "12s": Math.floor(beefWeight / 12),
+            "16s": Math.floor(beefWeight / 16)
+        };
+
+        var resultText = "<h2>Cut Recommendations:</h2><ul class=\"text\">";
+        for (var cut in cuts) {
+            if (cuts.hasOwnProperty(cut)) {
+                resultText += "<li>" + cut + ": " + cuts[cut] + " Steaks</li>";
+            }
+        }
+        resultText += "</ul>";
+        cutsResult.innerHTML = resultText;
+    }
+
+    function subtractWeight(amount) {
+        var beefWeightInput = document.getElementById("beefWeight");
+        var currentWeight = parseFloat(beefWeightInput.value);
+        if (!isNaN(currentWeight)) {
+            var newWeight = Math.max(currentWeight - amount, 0);
+            beefWeightInput.value = newWeight;
+            calculateCuts(); // Update cut recommendations after subtracting weight
+        }
+    }
+</script>
+   
     </div>
 </body>
 </html>
