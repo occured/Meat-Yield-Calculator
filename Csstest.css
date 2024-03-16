@@ -1,5 +1,6 @@
 body {
     background-color: rgb(39, 30, 88);
+    font-size: larger;
 }
 
 
@@ -24,6 +25,9 @@ body {
     width: 100%;
     text-align: center;
 }
+.type{
+    font-size: 30px; 
+}
 
 .typeSelect,
 .caseWeight,
@@ -32,7 +36,21 @@ body {
     width: 300px; 
     height: 35px;
     margin-bottom: 10px;
-    font-size: larger;
+    
+}
+.text{
+    font-size: 30px;
+}
+.steak-button{
+    width: 100px;
+    height: 60px;
+    font-size: 25px;
+   margin-bottom: 20px;
+}
+.calculate-button{
+    width: 300px;
+    height: 60px;
+    font-size: 25px;
 }
 .steak{
     width: 300px; 
